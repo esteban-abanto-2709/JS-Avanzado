@@ -1,0 +1,31 @@
+<section class="min-h-screen bg-slate-50 px-6 py-10">
+  <div class="mx-auto max-w-5xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-semibold text-slate-800">Clientes</h1>
+      <p class="mt-1 text-slate-500">Clientes mayoristas registrados (datos simulados)</p>
+    </header>
+
+    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-50 text-slate-500">
+          <tr>
+            <th class="px-5 py-3 font-medium">Razón social</th>
+            <th class="px-5 py-3 font-medium">RUC</th>
+            <th class="px-5 py-3 font-medium">Distrito</th>
+            <th class="px-5 py-3 font-medium">Teléfono</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          @for (client of clients; track client.id) {
+            <tr class="hover:bg-slate-50">
+              <td class="px-5 py-3 font-medium text-slate-800">{{ client.businessName }}</td>
+              <td class="px-5 py-3 text-slate-600">{{ client.ruc }}</td>
+              <td class="px-5 py-3 text-slate-600">{{ client.district }}</td>
+              <td class="px-5 py-3 text-slate-600">{{ client.phone }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
