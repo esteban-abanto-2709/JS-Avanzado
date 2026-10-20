@@ -10,7 +10,7 @@ import { UsersStore } from '../../../application/users.store';
 export class DashboardPage implements OnInit{
 
   protected readonly store = inject(UsersStore);
-  protected readonly query = signal("tesla");
+  protected readonly query = signal("");
   
   ngOnInit(): void {
     this.search();
@@ -18,9 +18,7 @@ export class DashboardPage implements OnInit{
   search():void{
 
     const query = this.query().trim();
-    if(query){
-      this.store.searchUsers(query);
-    }
+    this.store.searchUsers(query);
 
   }
 

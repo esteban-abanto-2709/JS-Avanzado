@@ -19,15 +19,12 @@ export class UsersStore {
     searchUsers(query: string) {
         this.loadingState.set(true);
         this.errorState.set("");
-        const { getUsersByQuery } = this.usersApi;
-        getUsersByQuery(query)
+        this.usersApi.getUsersByQuery(query)
             .pipe(
                 finalize(() => this.loadingState.set(false))
             )
             .subscribe({
                 next: (users) => {
-                    console.log(users);
-                    
                     this.userState.set(users);
                 },
                 error: (error) => {

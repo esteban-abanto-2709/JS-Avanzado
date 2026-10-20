@@ -1,45 +1,68 @@
-<section class="page">
-   <header>
-        <h1>Users Api</h1>
-        <p>Buscando usuarios utilizando JSONPlaceholder</p>
+<section class="min-h-screen bg-slate-50 px-6 py-10">
+  <div class="mx-auto max-w-5xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-semibold text-slate-800">Usuarios</h1>
+      <p class="mt-1 text-slate-500">Buscando usuarios utilizando JSONPlaceholder</p>
     </header>
-    <div class="search">
-    <input
-    #queryInput
-    type="text"
-    [value]="query()"
-    (input)="query.set(queryInput.value)"
-    placeholder="Buscar usuarios">
 
-    <button
-    type="button"
-    (click)= "search()"
-    >
-     Buscar Usuarios
-    </button>
+    <div class="mb-8 flex gap-3">
+      <input
+        #queryInput
+        type="text"
+        [value]="query()"
+        (input)="query.set(queryInput.value)"
+        (keydown.enter)="search()"
+        placeholder="Buscar usuarios"
+        class="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-700 shadow-sm outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+      />
+      <button
+        type="button"
+        (click)="search()"
+        class="cursor-pointer rounded-lg bg-indigo-600 px-5 py-2.5 font-medium text-white shadow-sm transition hover:bg-indigo-700"
+      >
+        Buscar
+      </button>
     </div>
-  <div class="users">
-   @for(user of store.users(); track user.id){
-      <article>
-         <h2>
-            {{user.name}}
-         </h2>
-         <p>
-            {{user.username}}
-         </p>
-         <p>
-            {{user.email}}
-         </p>
-         <p>
-            {{user.phone}}
-         </p>
-         <a
-         [href]="'https://' + user.website"
-         target="_blank">
-         {{user.website}}
-        </a>
-      </article>
-   }
-  </div>
 
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      @for (user of store.users(); track user.id) {
+        <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-indigo-100 font-semibold text-indigo-700">
+              {{ user.name.charAt(0) }}
+            </div>
+            <div>
+              <h2 class="font-semibold text-slate-800">{{ user.name }}</h2>
+              <p class="text-sm text-slate-400">&#64;{{ user.username }}</p>
+            </div>
+          </div>
+
+          <dl class="space-y-1.5 text-sm">
+            <div class="flex gap-2">
+              <dt class="w-16 shrink-0 text-slate-400">Correo</dt>
+              <dd class="truncate text-slate-700">{{ user.email }}</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt class="w-16 shrink-0 text-slate-400">Teléfono</dt>
+              <dd class="text-slate-700">{{ user.phone }}</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt class="w-16 shrink-0 text-slate-400">Web</dt>
+              <dd>
+                <a
+                  [href]="'https://' + user.website"
+                  target="_blank"
+                  class="text-indigo-600 hover:underline"
+                >
+                  {{ user.website }}
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </article>
+      } @empty {
+        <p class="col-span-full py-10 text-center text-slate-400">No se encontraron usuarios</p>
+      }
+    </div>
+  </div>
 </section>
