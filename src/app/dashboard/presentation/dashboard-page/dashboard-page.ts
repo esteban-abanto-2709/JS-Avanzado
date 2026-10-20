@@ -1,8 +1,9 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { UsersStore } from '../../../application/users.store';
+import { UserCard } from '../../../presentation/components/user-card/user-card';
 
 @Component({
-  imports: [],
+  imports: [UserCard],
   selector: 'app-dashboard-page',
   styleUrl: './dashboard-page.css',
   templateUrl: './dashboard-page.html',
