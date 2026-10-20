@@ -1,43 +1,44 @@
 <section class="page">
    <header>
-        <h1>News Api</h1>
-        <p>Buscando noticias utilizando NewsApi</p>
+        <h1>Users Api</h1>
+        <p>Buscando usuarios utilizando JSONPlaceholder</p>
     </header>
     <div class="search">
-    <input 
+    <input
     #queryInput
     type="text"
     [value]="query()"
     (input)="query.set(queryInput.value)"
-    placeholder="Buscar noticias">
+    placeholder="Buscar usuarios">
 
     <button
     type="button"
     (click)= "search()"
     >
-     Buscar Noticias
+     Buscar Usuarios
     </button>
-    </div> 
-  <div class="articles">
-   @for(article of store.users(); track article.url){
+    </div>
+  <div class="users">
+   @for(user of store.users(); track user.id){
       <article>
-         @if(article.urlToImage){
-            <img
-             [src]="article.urlToImage"
-             [alt]="article.title">
-         }
          <h2>
-            {{article.title}}
+            {{user.name}}
          </h2>
          <p>
-            {{article.description}}
+            {{user.username}}
          </p>
-         <a 
-         [href]="article.url"
+         <p>
+            {{user.email}}
+         </p>
+         <p>
+            {{user.phone}}
+         </p>
+         <a
+         [href]="'https://' + user.website"
          target="_blank">
-         Leer noticia
+         {{user.website}}
         </a>
-      </article> 
+      </article>
    }
   </div>
 

@@ -1,13 +1,13 @@
-import { resource, Service } from '@angular/core';
+import { Service } from '@angular/core';
 import { User } from '../../domain/model/user.entity';
-import { ArticleResource } from './everything-response';
+import { UserResource } from './users-response';
 
 @Service()
-export class ArticleAssembler {
+export class UserAssembler {
 
-    toEntity(resource:ArticleResource):User{    
+    toEntity(resource:UserResource):User{
         return new User(
-          resource.id ?? '',
+          resource.id ?? 0,
           resource.name ?? '',
           resource.username ?? '',
           resource.email ?? '',
@@ -15,7 +15,7 @@ export class ArticleAssembler {
           resource.website ?? ''
         );
     }
-    toEntities(resources:ArticleResource[]):User[]{
+    toEntities(resources:UserResource[]):User[]{
     return resources.map(resource => this.toEntity(resource));
     }
 

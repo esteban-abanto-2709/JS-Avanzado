@@ -2,29 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
-import { ArticleAssembler } from './article-assembler';
-import { EverythingResponse } from './everything-response';
+import { UserAssembler } from './user-assembler';
+import { UserResource } from './users-response';
 import { environment } from '../../../environments/environment.development';
 import { User } from '../../domain/model/user.entity';
 
 @Service()
-export class NewsApi {
+export class UsersApi {
 
     private readonly http =  inject(HttpClient);
-    private readonly assembler = inject(ArticleAssembler);
-    private readonly endPoint = `${environment.newsApiBaseURL}${environment.newsApiEndPoint}`;
+    private readonly assembler = inject(UserAssembler);
+    private readonly endPoint = `${environment.usersApiBaseURL}${environment.usersApiEndPoint}`;
 
-    getArticlesByQuery(query:string):Observable<User[]> {
-     return  this.http.get<User[]>(
+    getUsersByQuery(query:string):Observable<User[]> {
+     return  this.http.get<UserResource[]>(
          this.endPoint,
          {
            params:{
-               q: query,
-            sortBy:"id"
+               q: query
            }
          }
         ).pipe(
-            map(response => this.assembler.toEntities(response.articles))
+            map(resources => this.assembler.toEntities(resources))
         );
     }
 }

@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { UsersStore } from '../../application/users.store';
+import { UsersStore } from '../../../application/users.store';
 
 @Component({
   imports: [],
-  selector: 'app-news-page',
+  selector: 'app-dashboard-page',
   styleUrl: './dashboard-page.css',
   templateUrl: './dashboard-page.html',
 })
-export class NewsPage implements OnInit{
+export class DashboardPage implements OnInit{
 
   protected readonly store = inject(UsersStore);
   protected readonly query = signal("tesla");
@@ -19,7 +19,7 @@ export class NewsPage implements OnInit{
 
     const query = this.query().trim();
     if(query){
-      this.store.searchArticle(query);
+      this.store.searchUsers(query);
     }
 
   }

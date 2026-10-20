@@ -1,5 +1,5 @@
 export const environment = {
     production:false,
-    newsApiBaseURL:"https://jsonplaceholder.typicode.com",
-    newsApiEndPoint:"/users"    
+    usersApiBaseURL:"https://jsonplaceholder.typicode.com",
+    usersApiEndPoint:"/users"
 };

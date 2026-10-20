@@ -16,11 +16,11 @@ export class UsersStore {
     readonly loading = computed(() => this.loadingState());
     readonly error = computed(() => this.errorState());
 
-    searchuser(query: string) {
+    searchUsers(query: string) {
         this.loadingState.set(true);
         this.errorState.set("");
-        const { getusersByQuery } = this.usersApi;
-        getusersByQuery(query)
+        const { getUsersByQuery } = this.usersApi;
+        getUsersByQuery(query)
             .pipe(
                 finalize(() => this.loadingState.set(false))
             )
