@@ -1,14 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { UsersStore } from '../../../application/users.store';
-import { UserCard } from '../../../presentation/components/user-card/user-card';
+import { UsersStore } from '../../application/users.store';
+import { UserCard } from '../components/user-card/user-card';
 
 @Component({
   imports: [UserCard],
-  selector: 'app-dashboard-page',
-  styleUrl: './dashboard-page.css',
-  templateUrl: './dashboard-page.html',
+  selector: 'app-users-page',
+  styleUrl: './users-page.css',
+  templateUrl: './users-page.html',
 })
-export class DashboardPage implements OnInit{
+export class UsersPage implements OnInit{
 
   protected readonly store = inject(UsersStore);
   protected readonly query = signal("");

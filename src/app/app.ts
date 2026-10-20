@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { DashboardPage } from './dashboard/presentation/dashboard-page/dashboard-page';
+import { UsersPage } from './users/presentation/users-page/users-page';
 
 @Component({
-  imports: [DashboardPage],
+  imports: [UsersPage],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

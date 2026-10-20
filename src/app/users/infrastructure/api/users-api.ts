@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 
 import { UserAssembler } from './user-assembler';
 import { UserResource } from './users-response';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../../environments/environment.development';
 import { User } from '../../domain/model/user.entity';
 
 @Service()
