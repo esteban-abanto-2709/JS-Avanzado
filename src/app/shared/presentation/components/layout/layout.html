@@ -1,0 +1,27 @@
+<mat-sidenav-container class="h-screen">
+  <mat-sidenav mode="side" opened class="w-64 border-r border-slate-200">
+    <div class="px-5 py-6">
+      <p class="text-xs font-medium tracking-wide text-slate-400 uppercase">Dashboard</p>
+      <p class="mt-1 font-semibold text-slate-800">Distribuciones El Progreso</p>
+    </div>
+
+    <mat-nav-list>
+      @for (item of menuItems; track item.path) {
+        <a
+          mat-list-item
+          [routerLink]="item.path"
+          routerLinkActive
+          #link="routerLinkActive"
+          [activated]="link.isActive"
+        >
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
