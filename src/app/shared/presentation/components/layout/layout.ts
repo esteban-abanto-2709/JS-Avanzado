@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 export class Layout {
 
   protected readonly menuItems = [
+    { label: 'Inicio', icon: 'home', path: '/' },
     { label: 'Clientes', icon: 'groups', path: '/clientes' },
     { label: 'Empleados', icon: 'badge', path: '/empleados' },
     { label: 'Productos', icon: 'inventory_2', path: '/productos' },

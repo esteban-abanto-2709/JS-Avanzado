@@ -1,0 +1,26 @@
+<section class="min-h-screen bg-slate-50 px-6 py-10">
+  <div class="mx-auto max-w-5xl">
+    <header class="mb-8 rounded-xl bg-indigo-600 px-8 py-10 text-white shadow-sm">
+      <p class="text-sm font-medium tracking-wide text-indigo-200 uppercase">Sistema interno</p>
+      <h1 class="mt-1 text-3xl font-semibold">{{ systemName }}</h1>
+      <p class="mt-4 text-indigo-100">Bienvenido. Elige una sección para empezar.</p>
+    </header>
+
+    <div class="grid gap-5 sm:grid-cols-2">
+      @for (shortcut of shortcuts; track shortcut.path) {
+        <a
+          [routerLink]="shortcut.path"
+          class="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+        >
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-indigo-100 text-indigo-700">
+            <mat-icon>{{ shortcut.icon }}</mat-icon>
+          </div>
+          <div>
+            <p class="font-semibold text-slate-800">{{ shortcut.label }}</p>
+            <p class="text-sm text-slate-500">{{ shortcut.description }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
